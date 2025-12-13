@@ -8,25 +8,55 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.Hyperlink?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="900.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0.2, 0, 10);" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="550.0" prefWidth="900.0"
+           style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0.2, 0, 10);"
+           xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="lp.JavaFxClient.Controllers.LoginController">
+
    <children>
-      <VBox alignment="TOP_CENTER" maxWidth="360.0" prefHeight="200.0" prefWidth="100.0" spacing="14.0" style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0.2, 0, 10);">
+      <VBox alignment="TOP_CENTER" maxWidth="360.0" prefHeight="200.0" prefWidth="100.0" spacing="14.0"
+            style="-fx-background-color: white; -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.12), 24, 0.2, 0, 10);">
          <padding>
             <Insets bottom="28.0" left="28.0" right="28.0" top="28.0" />
          </padding>
+
          <children>
             <Label style="-fx-font-weight: 800; -fx-text-fill: #2b2b2b;" text="Connexus">
                <font>
                   <Font size="56.0" />
                </font>
             </Label>
+
             <Label style="-fx-font-weight: bold; -fx-text-fill: #5a5a5a;" text="Utilizador" />
-            <TextField prefHeight="40.0" prefWidth="300.0" promptText="Insere o email" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #d6dbe3;" />
+            <TextField fx:id="emailField"
+                       prefHeight="40.0" prefWidth="300.0"
+                       promptText="Insere o email"
+                       style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #d6dbe3;" />
+
             <Label style="-fx-font-weight: bold; -fx-text-fill: #5a5a5a;" text="Password" />
-            <PasswordField prefHeight="40.0" prefWidth="300.0" promptText="Insere a Password" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #d6dbe3;" />
-            <Button mnemonicParsing="false" prefHeight="42.0" style="-fx-background-color: #4a90e2; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 10;" text="Login" />
+            <PasswordField fx:id="passwordField"
+                           prefHeight="40.0" prefWidth="300.0"
+                           promptText="Insere a Password"
+                           style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-border-color: #d6dbe3;" />
+			<Label fx:id="errorLabel"
+      		 text=""
+      		 visible="false"
+       		style="-fx-text-fill: #d93025; -fx-font-weight: bold;" />
+
+            <Button mnemonicParsing="false" prefHeight="42.0"
+                    style="-fx-background-color: #4a90e2; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 10;"
+                    text="Login"
+                    onAction="#onLogin"/>
+                    <Hyperlink text="Não tens conta? Regista-te aqui"
+           onAction="#onOpenRegister"
+           style="-fx-text-fill: #4a90e2; -fx-font-weight: bold;" />
+
          </children>
       </VBox>
    </children>
 </StackPane>
+	
