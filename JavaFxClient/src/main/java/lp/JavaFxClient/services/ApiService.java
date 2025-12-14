@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class ApiService {
 
-    private static final String BASE_URL = "http://localhost:8087";
+    private static final String BASE_URL = "http://localhost:8091";
 
     private final HttpClient client = HttpClient.newHttpClient();
 
@@ -43,4 +43,21 @@ public class ApiService {
 
         return response.body();
     }
+    public String put(String path, String jsonBody) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(BASE_URL + path))
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(jsonBody))
+                .build();
+
+        HttpResponse<String> response =
+                client.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() >= 400) {
+            throw new RuntimeException(response.body());
+        }
+
+        return response.body();
+    }
+
 }

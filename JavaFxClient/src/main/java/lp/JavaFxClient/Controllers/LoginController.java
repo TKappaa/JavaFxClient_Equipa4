@@ -1,6 +1,6 @@
 package lp.JavaFxClient.Controllers;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import lp.JavaFxClient.Model.UtilizadorDTO;
 import lp.JavaFxClient.services.ApiService;
 
-import java.util.List;
 
 public class LoginController {
 
@@ -42,8 +41,10 @@ public class LoginController {
                 """.formatted(email, pass);
 
             String json = api.post("/api/utilizadores/login", body);
-
             UtilizadorDTO user = mapper.readValue(json, UtilizadorDTO.class);
+
+            
+            lp.JavaFxClient.Session.Session.setCurrentUser(user);
 
             abrirMenuPorTipo(user.getTipoUtilizador());
 
@@ -70,17 +71,6 @@ public class LoginController {
         }
     }
 
-    private void abrirAppView() throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/app-view.fxml"));
-        Scene scene = new Scene(loader.load());
-
-        Stage stage = (Stage) emailField.getScene().getWindow();
-        stage.setScene(scene);
-        stage.setTitle("Connexus - Aplicação");
-        stage.setWidth(900);
-        stage.setHeight(600);
-        stage.show();
-    }
 
     private void alert(Alert.AlertType type, String titulo, String mensagem) {
         Alert a = new Alert(type);

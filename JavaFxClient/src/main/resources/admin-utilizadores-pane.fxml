@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lp.JavaFxClient.Controllers.AdminUtilizadoresController"
+      spacing="10">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Gestão de Utilizadores"
+           style="-fx-font-size: 20; -fx-font-weight: bold;" />
+
+    <TableView fx:id="usersTable" prefHeight="400">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colNome" text="Nome" prefWidth="200"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
+            <TableColumn fx:id="colEstado" text="Estado" prefWidth="120"/>
+            <TableColumn fx:id="colTipo" text="Tipo" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <TitledPane text="Alterar Utilizador Selecionado" expanded="true">
+        <content>
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Label text="Estado:"/>
+                    <ComboBox fx:id="estadoCombo" prefWidth="140"/>
+
+                    <Label text="Tipo:"/>
+                    <ComboBox fx:id="tipoCombo" prefWidth="160"/>
+
+                    <Button text="Guardar Alterações"
+                            onAction="#onGuardarAlteracoes"/>
+                </HBox>
+
+                <Label fx:id="statusLabel" text="" style="-fx-font-weight: bold;"/>
+            </VBox>
+        </content>
+    </TitledPane>
+
+</VBox>
