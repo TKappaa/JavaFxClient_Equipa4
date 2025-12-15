@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lp.JavaFxClient.Controllers.CriarEventoController" spacing="15" maxWidth="500">
+    <padding><Insets top="20" right="20" bottom="20" left="20"/></padding>
+    
+    <Label text="Criar Novo Evento" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+    
+    <VBox spacing="5">
+        <Label text="Título"/>
+        <TextField fx:id="tituloField" promptText="Ex: Concerto de Verão"/>
+    </VBox>
+    
+    <VBox spacing="5">
+        <Label text="Local"/>
+        <TextField fx:id="localField" promptText="Ex: Pavilhão A"/>
+    </VBox>
+    
+    <VBox spacing="5">
+        <Label text="Capacidade"/>
+        <TextField fx:id="capacidadeField" promptText="Ex: 100"/>
+    </VBox>
+    
+    <HBox spacing="10">
+        <VBox spacing="5">
+            <Label text="Data Início"/>
+            <DatePicker fx:id="inicioDate"/>
+        </VBox>
+        <VBox spacing="5">
+            <Label text="Data Fim"/>
+            <DatePicker fx:id="fimDate"/>
+        </VBox>
+    </HBox>
+    
+    <Button text="Criar Evento" onAction="#onGuardar" style="-fx-background-color: #4a90e2; -fx-text-fill: white; -fx-font-weight: bold;"/>
+</VBox>
