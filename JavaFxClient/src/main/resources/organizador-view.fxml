@@ -2,9 +2,61 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
 <StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label text="MENU ORGANIZADOR"/>
     </children>
 </StackPane>
+
+<BorderPane fx:id="rootPane" prefHeight="600.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lp.JavaFxClient.Controllers.OrganizadorController">
+
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10" style="-fx-background-color: white; -fx-border-color: #ddd; -fx-border-width: 0 0 1 0;">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+            <Label fx:id="welcomeLabel" style="-fx-font-weight: bold; -fx-font-size: 14;" text="Bem-vindo" />
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefWidth="200" spacing="15" style="-fx-background-color: #2b2b2b;">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+            
+            <Label style="-fx-text-fill: white; -fx-font-size: 18; -fx-font-weight: bold;" text="MENU" />
+            
+            <Button maxWidth="Infinity" onAction="#onMeusEventos" 
+                    style="-fx-background-color: #4a90e2; -fx-text-fill: white; -fx-cursor: hand; -fx-font-weight: bold;" 
+                    text="Meus Eventos" />
+            
+            <Button maxWidth="Infinity" onAction="#onCriarEvento" 
+                    style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: white; -fx-border-radius: 5; -fx-cursor: hand;" 
+                    text="Criar Evento" />
+            
+            <VBox alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS">
+                <Button maxWidth="Infinity" onAction="#onLogout" 
+                        style="-fx-background-color: #d93025; -fx-text-fill: white; -fx-cursor: hand;" 
+                        text="Sair" />
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane style="-fx-background-color: #f4f4f4;">
+            <Label style="-fx-text-fill: #999; -fx-font-size: 16;" text="A carregar..." />
+        </StackPane>
+    </center>
+
+</BorderPane>
