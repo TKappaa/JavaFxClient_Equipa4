@@ -88,7 +88,7 @@ public class AdminUtilizadoresController {
             return;
         }
 
-        // Admin não pode mexer noutro ADMIN (exceto nele próprio)
+        
         if ("ADMIN".equalsIgnoreCase(selecionado.getTipoUtilizador())
                 && adminAtual != null
                 && !selecionado.getId().equals(adminAtual.getId())) {

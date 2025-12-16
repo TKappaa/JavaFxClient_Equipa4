@@ -9,30 +9,76 @@
             fx:controller="lp.JavaFxClient.Controllers.AdminController"
             fx:id="rootPane">
 
+    <!-- TOP -->
     <top>
         <HBox alignment="CENTER_RIGHT" spacing="10">
             <padding>
                 <Insets top="10" right="15" bottom="10" left="15"/>
             </padding>
             <Label fx:id="welcomeLabel" text="Bem-vindo"
-                   style="-fx-font-weight: bold;"/>
+                   style="-fx-font-weight: bold; -fx-text-fill: #2b2b2b;"/>
         </HBox>
     </top>
 
+    <!-- LEFT MENU -->
     <left>
-        <VBox spacing="12" prefWidth="180" style="-fx-background-color: #efefef;">
+        <VBox spacing="12" prefWidth="190"
+              style="-fx-background-color: #f4f6f8;">
             <padding>
-                <Insets top="20" right="15" bottom="20" left="15"/>
+                <Insets top="25" right="15" bottom="25" left="15"/>
             </padding>
 
-            <Label text="ADMIN" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+            <Label text="ADMIN"
+                   style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2b2b2b;"/>
 
-            <Button text="Utilizadores" onAction="#onUtilizadores"/>
-            <Button text="Eventos" onAction="#onEventos"/>
-            <Button text="Logout" onAction="#onLogout"/>
+            <!-- BOTÕES TODOS IGUAIS -->
+            <Button fx:id="btnUtilizadores"
+                    text="Utilizadores"
+                    onAction="#onUtilizadores"
+                    prefHeight="42" maxWidth="1.7976931348623157E308"
+                    style="-fx-background-radius: 10;
+                           -fx-font-weight: bold;
+                           -fx-background-color: #ffffff;
+                           -fx-border-color: #d6dbe3;
+                           -fx-border-radius: 10;"/>
+
+            <Button fx:id="btnEventos"
+                    text="Eventos"
+                    onAction="#onEventos"
+                    prefHeight="42" maxWidth="1.7976931348623157E308"
+                    style="-fx-background-radius: 10;
+                           -fx-font-weight: bold;
+                           -fx-background-color: #ffffff;
+                           -fx-border-color: #d6dbe3;
+                           -fx-border-radius: 10;"/>
+
+            <Button fx:id="btnInscricoes"
+                    text="Inscrições"
+                    onAction="#onInscricoes"
+                    prefHeight="42" maxWidth="1.7976931348623157E308"
+                    style="-fx-background-radius: 10;
+                           -fx-font-weight: bold;
+                           -fx-background-color: #ffffff;
+                           -fx-border-color: #d6dbe3;
+                           -fx-border-radius: 10;"/>
+
+            <Region prefHeight="18"/>
+
+            <!-- LOGOUT CLEAN (sem vermelho) -->
+            <Button fx:id="btnLogout"
+                    text="Logout"
+                    onAction="#onLogout"
+                    prefHeight="42" maxWidth="1.7976931348623157E308"
+                    style="-fx-background-radius: 10;
+                           -fx-font-weight: bold;
+                           -fx-background-color: #e9edf2;
+                           -fx-border-color: #d6dbe3;
+                           -fx-border-radius: 10;
+                           -fx-text-fill: #2b2b2b;"/>
         </VBox>
     </left>
 
+    <!-- CENTER -->
     <center>
         <StackPane>
             <Label text="Escolhe uma opção no menu."

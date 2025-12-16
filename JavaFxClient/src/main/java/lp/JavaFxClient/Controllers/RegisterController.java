@@ -37,7 +37,7 @@ public class RegisterController {
         }
 
         try {
-            // payload igual ao UtilizadorCreateDTO do backend
+            
             Map<String, String> payload = new HashMap<>();
             payload.put("nomeUtilizador", nome);
             payload.put("email", email);
@@ -45,7 +45,7 @@ public class RegisterController {
 
             String body = mapper.writeValueAsString(payload);
 
-            // cria utilizador no backend (o backend define ATIVO + PARTICIPANTE + id auto)
+            
             api.post("/api/utilizadores", body);
 
             Alert ok = new Alert(Alert.AlertType.INFORMATION);
@@ -54,14 +54,14 @@ public class RegisterController {
             ok.setContentText("Conta criada com sucesso! Já podes fazer login.");
             ok.showAndWait();
 
-            // voltar ao login
+            
             voltarAoLogin();
 
         } catch (Exception e) {
-            // Aqui normalmente vem a mensagem do backend (ex: "Email já existe")
+            
             String msg = e.getMessage() == null ? "Erro no registo." : e.getMessage();
 
-            // tenta melhorar a mensagem para o utilizador
+            
             if (msg.toLowerCase().contains("email") && msg.toLowerCase().contains("existe")) {
                 showError("Esse email já está registado. Usa outro email.");
             } else {

@@ -9,13 +9,13 @@ public class UtilizadorDTO {
     private String nomeUtilizador;
     private String email;
 
-    // vem do JSON do backend (ATIVO / INATIVO)
+    
     private String estadoUtilizador;
 
-    // vem do JSON do backend (ADMIN / ORGANIZADOR / PARTICIPANTE)
+    
     private String tipoUtilizador;
 
-    // vem do JSON do backend (para validar password)
+    
     private String senhaUtilizador;
 
     public Integer getId() {
