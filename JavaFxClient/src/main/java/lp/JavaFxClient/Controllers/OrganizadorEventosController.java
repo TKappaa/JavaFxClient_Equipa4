@@ -40,7 +40,6 @@ public class OrganizadorEventosController {
 
     private void carregarEventos() {
         try {
-            // Verifica se a tua API suporta "/api/eventos/meus" ou se usas "/api/eventos"
             String json = api.get("/api/eventos"); 
             List<EventoDTO> lista = mapper.readValue(json, new TypeReference<List<EventoDTO>>() {});
             data.setAll(lista);
