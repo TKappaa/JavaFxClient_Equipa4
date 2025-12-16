@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class EventoDTO {
 
     private Integer id;
-
+    
     @JsonAlias({"titulo", "tituloEvento"})
     private String titulo;
 
@@ -48,4 +48,17 @@ public class EventoDTO {
 
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
+    
+    // --- NOVOS CAMPOS ---
+    private String categoria;
+    private String descricao;
+
+    // ... getters e setters existentes ...
+
+    // --- NOVOS GETTERS E SETTERS ---
+    public String getCategoria() { return categoria; }
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 }

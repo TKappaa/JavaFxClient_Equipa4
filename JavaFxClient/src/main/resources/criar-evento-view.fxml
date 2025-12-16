@@ -15,6 +15,16 @@
     </VBox>
     
     <VBox spacing="5">
+        <Label text="Categoria"/>
+        <TextField fx:id="categoriaField" promptText="Escreva a categoria do evento..."/>
+    </VBox>
+
+    <VBox spacing="5">
+        <Label text="Descrição"/>
+        <TextArea fx:id="descricaoArea" prefHeight="80" wrapText="true" promptText="Descreve os detalhes do evento..."/>
+    </VBox>
+    
+    <VBox spacing="5">
         <Label text="Local"/>
         <TextField fx:id="localField" promptText="Ex: Pavilhão A"/>
     </VBox>

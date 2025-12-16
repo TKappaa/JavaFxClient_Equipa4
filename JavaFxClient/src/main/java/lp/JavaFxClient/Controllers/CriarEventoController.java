@@ -6,8 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+// import javafx.scene.control.ComboBox; // Não precisamos mais disto
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import lp.JavaFxClient.services.ApiService;
 
 import java.util.HashMap;
@@ -20,14 +22,19 @@ public class CriarEventoController {
     @FXML private TextField capacidadeField;
     @FXML private DatePicker inicioDate;
     @FXML private DatePicker fimDate;
+    
+    // ALTERAÇÃO 1: Voltamos a usar TextField
+    @FXML private TextField categoriaField; 
+    @FXML private TextArea descricaoArea;
 
     private final ApiService api = new ApiService();
     private final ObjectMapper mapper = new ObjectMapper();
 
+    // ALTERAÇÃO 2: Removemos o método initialize() pois não há lista para carregar
+
     @FXML
     public void onGuardar(ActionEvent event) {
         try {
-            // 1. Obter o organizador logado
             UtilizadorDTO organizador = Session.getCurrentUser();
             
             if (organizador == null) {
@@ -35,12 +42,14 @@ public class CriarEventoController {
                 return;
             }
 
-            // 2. Criar o JSON do evento (igual ao que já tinhas)
             Map<String, Object> payload = new HashMap<>();
             payload.put("titulo", tituloField.getText());
             payload.put("local", localField.getText());
             
-            // Validar se capacidade é número
+            // ALTERAÇÃO 3: Lemos o texto diretamente
+            payload.put("categoria", categoriaField.getText()); 
+            payload.put("descricao", descricaoArea.getText()); 
+
             try {
                 payload.put("capacidade", Integer.parseInt(capacidadeField.getText()));
             } catch (NumberFormatException e) {
@@ -48,7 +57,6 @@ public class CriarEventoController {
                 return;
             }
             
-            // Nota: Confirma se o formato da data é este ou se precisas de horas
             if (inicioDate.getValue() != null)
                 payload.put("dataInicio", inicioDate.getValue().toString() + "T09:00:00");
             
@@ -56,9 +64,6 @@ public class CriarEventoController {
                 payload.put("dataFim", fimDate.getValue().toString() + "T18:00:00");
 
             String json = mapper.writeValueAsString(payload);
-
-            // 3. ALTERAÇÃO PRINCIPAL: Adicionar o ?organizadorId=... no fim do URL
-            // O backend pede este parâmetro explicitamente
             String url = "/api/eventos?organizadorId=" + organizador.getId();
             
             api.post(url, json);
@@ -66,20 +71,25 @@ public class CriarEventoController {
             Alert a = new Alert(Alert.AlertType.INFORMATION, "Evento criado com sucesso!");
             a.showAndWait();
             
-            // Limpar campos...
-            tituloField.clear();
-            localField.clear();
-            capacidadeField.clear();
+            limparFormulario();
 
         } catch (Exception e) {
             e.printStackTrace();
-            // Mostra o erro real que vem da API
             Alert a = new Alert(Alert.AlertType.ERROR, "Erro ao criar: " + e.getMessage());
             a.show();
         }
     }
     
-    // Pequeno método auxiliar para mensagens de erro, se não tiveres
+    private void limparFormulario() {
+        tituloField.clear();
+        localField.clear();
+        capacidadeField.clear();
+        descricaoArea.clear();
+        categoriaField.clear(); // Limpar o campo de texto
+        inicioDate.setValue(null);
+        fimDate.setValue(null);
+    }
+
     private void showError(String msg) {
         Alert a = new Alert(Alert.AlertType.ERROR, msg);
         a.show();
