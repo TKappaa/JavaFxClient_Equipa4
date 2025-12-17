@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="lp.JavaFxClient.Controllers.ParticipanteNotificacoesController"
+      spacing="12"
+      style="-fx-padding:15;">
+
+    <Label text="Notificações"
+           style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+    <TableView fx:id="notificacoesTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="colMensagem"
+                         text="Mensagem"
+                         prefWidth="350"/>
+            <TableColumn fx:id="colEstado"
+                         text="Estado"
+                         prefWidth="100"/>
+            <TableColumn fx:id="colData"
+                         text="Data"
+                         prefWidth="160"/>
+        </columns>
+    </TableView>
+
+    <HBox>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button text="Marcar todas como lidas"
+        onAction="#onMarcarTodasLidas"/>
+    </HBox>
+
+</VBox>
