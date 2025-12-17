@@ -7,7 +7,7 @@ import java.net.http.HttpResponse;
 
 public class ApiService {
 
-    private static final String BASE_URL = "http://localhost:8091";
+    private static final String BASE_URL = "http://localhost:8087";
 
     private final HttpClient client = HttpClient.newHttpClient();
 

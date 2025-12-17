@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="lp.JavaFxClient.Controllers.ParticipanteEventosController"
+      spacing="10"
+      style="-fx-padding:15;">
+
+    <Label text="Eventos Ativos"
+           style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+    <TableView fx:id="eventosTable">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+            <TableColumn fx:id="colTitulo" text="Título" prefWidth="180"/>
+            <TableColumn fx:id="colLocal" text="Local" prefWidth="140"/>
+            <TableColumn fx:id="colCapacidade" text="Capacidade" prefWidth="90"/>
+            <TableColumn fx:id="colInicio" text="Início" prefWidth="140"/>
+            <TableColumn fx:id="colFim" text="Fim" prefWidth="140"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button text="Inscrever-se"
+                onAction="#onInscrever"/>
+    </HBox>
+
+</VBox>
