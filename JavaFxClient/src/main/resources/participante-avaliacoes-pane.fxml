@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="lp.JavaFxClient.Controllers.ParticipanteAvaliacoesController"
+      spacing="12"
+      style="-fx-padding:15;">
+
+    <!-- TÍTULO -->
+    <Label text="Avaliar Evento"
+           style="-fx-font-size:16; -fx-font-weight:bold;"/>
+
+    <Label fx:id="lblEvento"
+           style="-fx-font-size:14;"/>
+
+    <!-- FORMULÁRIO -->
+    <HBox spacing="10">
+        <Label text="Pontuação:"/>
+        <Spinner fx:id="spPontuacao" prefWidth="80"/>
+        <Pane HBox.hgrow="ALWAYS"/>
+    </HBox>
+
+    <TextArea fx:id="txtComentario"
+              promptText="Comentário da avaliação"
+              prefHeight="80"
+              wrapText="true"/>
+
+    <HBox>
+        <Pane HBox.hgrow="ALWAYS"/>
+        <Button fx:id="btnAvaliar"
+                text="Submeter Avaliação"
+                onAction="#onAvaliar"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- TABELA DE AVALIAÇÕES -->
+    <Label text="As Minhas Avaliações"
+           style="-fx-font-size:15; -fx-font-weight:bold;"/>
+
+    <TableView fx:id="avaliacoesTable" prefHeight="240">
+        <columns>
+            <TableColumn fx:id="colEvento"
+                         text="Evento"
+                         prefWidth="120"/>
+            <TableColumn fx:id="colPontuacao"
+                         text="Pontuação"
+                         prefWidth="90"/>
+            <TableColumn fx:id="colComentario"
+                         text="Comentário"
+                         prefWidth="280"/>
+            <TableColumn fx:id="colData"
+                         text="Data"
+                         prefWidth="160"/>
+        </columns>
+    </TableView>
+
+</VBox>
