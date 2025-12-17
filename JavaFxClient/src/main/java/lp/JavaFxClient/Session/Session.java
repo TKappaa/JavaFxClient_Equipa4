@@ -1,6 +1,7 @@
 package lp.JavaFxClient.Session;
 
 import lp.JavaFxClient.Model.UtilizadorDTO;
+import lp.JavaFxClient.Model.InscricaoDTO;
 
 public final class Session {
 
@@ -23,4 +24,19 @@ public final class Session {
     public static void clear() {
         currentUser = null;
     }
+    
+    private static InscricaoDTO eventoParaAvaliar;
+
+    public static void setEventoParaAvaliar(InscricaoDTO i) {
+        eventoParaAvaliar = i;
+    }
+
+    public static InscricaoDTO getEventoParaAvaliar() {
+        return eventoParaAvaliar;
+    }
+
+    public static void clearEventoParaAvaliar() {
+        eventoParaAvaliar = null;
+    }
+
 }
